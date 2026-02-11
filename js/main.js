@@ -68,29 +68,26 @@ function startCountdown() {
 }
 
 // --- NEW FEATURE: Share Actual PDF File ---
-async function shareBrochure() {
-    try {
-        const response = await fetch(CONFIG.pdfLink);
-        const blob = await response.blob();
-        const file = new File([blob], CONFIG.pdfName, { type: blob.type });
+// --- UPDATED FEATURE: Share PDF Link via WhatsApp ---
+function shareBrochure() {
+    // 1. Get the absolute URL for the PDF
+    // If CONFIG.pdfLink is relative, resolve it against the current page URL
+    const pdfUrl = new URL(CONFIG.pdfLink, window.location.href).href;
 
-        if (navigator.canShare && navigator.canShare({ files: [file] })) {
-            await navigator.share({
-                files: [file],
-                title: 'Brochure',
-                text: CONFIG.message
-            });
-            console.log('Shared successfully');
-        } else {
-            console.log('Web Share API not supported or file not shareable.');
-            // Fallback to sending link via WhatsApp
-            alert("Direct file sharing is not supported on this device/browser. Opening WhatsApp with a link instead.");
-            openWhatsApp();
-        }
-    } catch (error) {
-        console.error('Error sharing:', error);
-        // Fallback
-        openWhatsApp();
+    // 2. Create message with the PDF link
+    // We use the configured message + the PDF link
+    const message = `${CONFIG.message}\n\n📄 ${CONFIG.pdfName}: ${pdfUrl}`;
+
+    // 3. Open WhatsApp
+    const phoneNumber = CONFIG.phoneNumber.replace(/[^\d+]/g, '');
+    const whatsappURL = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
+
+    // Redirect
+    window.location.href = whatsappURL;
+    hasRedirected = true;
+
+    if (countdownInterval) {
+        clearInterval(countdownInterval);
     }
 }
 
