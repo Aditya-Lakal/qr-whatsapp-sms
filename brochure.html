@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Open Graph Metadata for WhatsApp/Social Media -->
+    <meta property="og:title" content="Atman AI Summit 2026 Brochure" />
+    <meta property="og:description"
+        content="Explore Atman AI Solutions to unlock smarter insights and next-gen AI capabilities." />
+    <meta property="og:image" content="assets/brochure-preview.png" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="" />
+    <!-- This will be auto-filled by some crawlers, but best to set manually if possible -->
+
+    <title>Atman AI Summit Brochure</title>
+
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background: #f0f2f5;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            color: #333;
+            font-size: 24px;
+        }
+
+        p {
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.5;
+        }
+
+        .btn {
+            background: #25D366;
+            color: white;
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            display: inline-block;
+            transition: transform 0.2s;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #25D366;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <h1>Opening Brochure...</h1>
+        <p>You are being redirected to the Atman AI Summit 2026 Brochure.</p>
+        <div class="spinner"></div>
+        <a href="assets/brochure.pdf" class="btn" id="manual-link">Click here if not redirected</a>
+    </div>
+
+    <script>
+        // Auto-redirect after a short delay to allow crawlers to read meta tags
+        // (Crawlers don't execute JS, so they won't redirect, they'll just see the meta tags!)
+        setTimeout(function () {
+            window.location.href = 'assets/brochure.pdf';
+        }, 1500);
+    </script>
+</body>
+
+</html>

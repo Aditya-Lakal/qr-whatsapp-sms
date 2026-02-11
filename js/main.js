@@ -70,13 +70,13 @@ function startCountdown() {
 // --- NEW FEATURE: Share Actual PDF File ---
 // --- UPDATED FEATURE: Share PDF Link via WhatsApp ---
 function shareBrochure() {
-    // 1. Get the absolute URL for the PDF
-    // If CONFIG.pdfLink is relative, resolve it against the current page URL
-    const pdfUrl = new URL(CONFIG.pdfLink, window.location.href).href;
+    // 1. Get the absolute URL for the Brochure Landing Page
+    // We share 'brochure.html' because it has the Open Graph metadata for the rich preview
+    const shareUrl = new URL('brochure.html', window.location.href).href;
 
     // 2. Create message with the PDF link
     // We use the configured message + the PDF link
-    const message = `${CONFIG.message}\n\n📄 ${CONFIG.pdfName}: ${pdfUrl}`;
+    const message = `${CONFIG.message}\n\n📄 ${CONFIG.pdfName}: ${shareUrl}`;
 
     // 3. Open WhatsApp
     const phoneNumber = CONFIG.phoneNumber.replace(/[^\d+]/g, '');

@@ -45,5 +45,4 @@ const CONFIG = {
 // 1. Upload PDF to your website's folder
 // 2. Use full URL: https://yourwebsite.com/folder/file.pdf
 //
-
 // ============================================

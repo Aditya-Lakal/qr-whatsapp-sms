@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WhatsApp Preview Mockup</title>
+    <style>
+        body {
+            background-color: #efe7dd;
+            /* WhatsApp default bg */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .chat-container {
+            width: 360px;
+            background-image: url('https://user-images.githubusercontent.com/15075759/28719144-86dc0f70-73b1-11e7-911d-60d70fcded21.png');
+            /* Subtle doodle pattern if available, else color */
+            padding: 20px;
+        }
+
+        .message-bubble {
+            background-color: #d9fdd3;
+            /* Outgoing message green */
+            border-radius: 7.5px;
+            box-shadow: 0 1px 0.5px rgba(0, 0, 0, 0.13);
+            padding: 6px 7px 8px 9px;
+            max-width: 300px;
+            position: relative;
+            margin-left: auto;
+            /* Right align */
+        }
+
+        .message-text {
+            font-size: 14.2px;
+            line-height: 19px;
+            color: #111b21;
+            margin-bottom: 4px;
+        }
+
+        .link-preview {
+            background-color: #cfecc5;
+            /* Slightly darker/different for card? Actually usually inside bubble, same color, but content differs. 
+            Wait, WhatsApp link previews are usually a separate block inside the bubbles or attached. 
+            On outgoing, it often looks like a card attached to the top or bottom. */
+            background-color: rgba(0, 0, 0, 0.05);
+            border-radius: 7.5px;
+            margin-top: 5px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .preview-image {
+            width: 100%;
+            height: 150px;
+            background-color: #334455;
+            /* Placeholder for the image */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+            background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .preview-content {
+            padding: 8px 10px;
+            background-color: #d1f4cc;
+            /* Slightly darker green inside card */
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .preview-title {
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 18px;
+            color: #111b21;
+            margin-bottom: 2px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .preview-desc {
+            font-size: 13px;
+            line-height: 16px;
+            color: #667781;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .preview-domain {
+            font-size: 11px;
+            line-height: 14px;
+            color: #667781;
+            margin-top: 4px;
+        }
+
+        .message-time {
+            float: right;
+            font-size: 11px;
+            color: #667781;
+            margin-top: 4px;
+            margin-left: 10px;
+        }
+
+        .message-status {
+            display: inline-block;
+            margin-left: 3px;
+            width: 16px;
+            height: 11px;
+            /* double check tick icon would go here */
+            color: #53bdeb;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="chat-container">
+        <div class="message-bubble">
+            <div class="link-preview">
+                <img src="assets/brochure-preview.png" class="preview-image"
+                    style="object-fit: contain; background-color: #fff;" alt="Brochure Preview">
+                <div class="preview-content">
+                    <div class="preview-title">Atman AI Summit 2026 Brochure</div>
+                    <div class="preview-desc">Discover how autonomous AI agents enable businesses to scale. Click to
+                        view the full brochure.</div>
+                    <div class="preview-domain">aditya-lakal.github.io</div>
+                </div>
+            </div>
+            <div class="message-text">
+                Hi! this is Aditya , thanks for visiting our Atman booth at ai summit 2026<br>
+                <br>
+                📄 Brochure.pdf: https://aditya-lakal.github.io/qr-whatsapp-sms/brochure.html
+            </div>
+            <div class="message-time">
+                12:48 PM <span style="color: #53bdeb;">✓✓</span>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
