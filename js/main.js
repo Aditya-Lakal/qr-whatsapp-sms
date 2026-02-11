@@ -26,8 +26,8 @@ function attemptWhatsAppRedirect() {
     // Start countdown
     startCountdown();
 
-    // Try to open WhatsApp
-    openWhatsApp();
+    // Try to open WhatsApp (Share PDF)
+    shareBrochure();
 
     // After countdown expires, show fallback options
     setTimeout(() => {
