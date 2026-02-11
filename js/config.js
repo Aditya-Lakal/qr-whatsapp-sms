@@ -4,7 +4,7 @@
 
 const CONFIG = {
     // Your phone number (include country code, e.g., +1234567890)
-    phoneNumber: '+917038423123',
+    phoneNumber: '+918080637616',
 
     // Message that will be pre-filled in WhatsApp/SMS
     message: 'Hi! this is Aditya , thanks for visiting our Atman booth at ai summit 2026',
@@ -45,4 +45,5 @@ const CONFIG = {
 // 1. Upload PDF to your website's folder
 // 2. Use full URL: https://yourwebsite.com/folder/file.pdf
 //
+
 // ============================================
