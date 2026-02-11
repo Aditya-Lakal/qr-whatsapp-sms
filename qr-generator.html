@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 10px;
+            font-size: 32px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+
+        .info-box {
+            background: #f0f7ff;
+            border-left: 4px solid #667eea;
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .info-box h3 {
+            color: #667eea;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .info-box p {
+            color: #555;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .info-box code {
+            background: #e0e7ff;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 13px;
+        }
+
+        label {
+            display: block;
+            color: #555;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            margin-bottom: 20px;
+            transition: border-color 0.3s;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        #qrcode {
+            margin-top: 30px;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            text-align: center;
+            display: none;
+        }
+
+        #qrcode canvas,
+        #qrcode img {
+            margin: 0 auto;
+            display: block;
+            border-radius: 8px;
+        }
+
+        .download-btn {
+            margin-top: 20px;
+            padding: 12px 24px;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .download-btn:hover {
+            background: #218838;
+            transform: translateY(-2px);
+        }
+
+        .url-display {
+            margin-top: 20px;
+            padding: 12px;
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 14px;
+            color: #333;
+            word-break: break-all;
+        }
+
+        .warning {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 16px;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+
+        .warning h3 {
+            color: #856404;
+            font-size: 16px;
+            margin-bottom: 8px;
+        }
+
+        .warning p {
+            color: #856404;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>📱 QR Code Generator</h1>
+        <p class="subtitle">Generate a QR code for your WhatsApp/SMS redirect page</p>
+
+        <div class="info-box">
+            <h3>🚀 Before You Start:</h3>
+            <p>
+                1. First, edit the <code>js/config.js</code> file with your phone number, message, and PDF link<br>
+                2. Upload the entire folder to a web hosting service (see instructions below)<br>
+                3. Enter your hosted URL below to generate the QR code
+            </p>
+        </div>
+
+        <label for="url">Your Hosted Page URL:</label>
+        <input type="url" id="url" placeholder="https://yourwebsite.com/qr-whatsapp-sms/" value="" />
+
+        <button class="btn" onclick="generateQR()">Generate QR Code</button>
+
+        <div id="qrcode"></div>
+
+        <div class="warning">
+            <h3>⚠️ Important - Hosting Required</h3>
+            <p>
+                For this to work when someone scans the QR code, you need to:<br><br>
+                <strong>Option 1 - Free Hosting:</strong><br>
+                • Upload to GitHub Pages (free)<br>
+                • Upload to Netlify (free)<br>
+                • Upload to Vercel (free)<br><br>
+
+                <strong>Option 2 - Your Own Website:</strong><br>
+                • Upload all files to your website's public folder<br>
+                • Use FTP/cPanel to upload<br><br>
+
+                Once uploaded, use the full URL of your <code>index.html</code> file above.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        let qrcodeInstance = null;
+
+        function generateQR() {
+            const url = document.getElementById('url').value.trim();
+
+            if (!url) {
+                alert('Please enter your hosted page URL');
+                return;
+            }
+
+            // Validate URL
+            try {
+                new URL(url);
+            } catch (e) {
+                alert('Please enter a valid URL (must start with http:// or https://)');
+                return;
+            }
+
+            // Clear previous QR code
+            const qrcodeDiv = document.getElementById('qrcode');
+            qrcodeDiv.innerHTML = '';
+            qrcodeDiv.style.display = 'block';
+
+            // Generate new QR code
+            qrcodeInstance = new QRCode(qrcodeDiv, {
+                text: url,
+                width: 300,
+                height: 300,
+                colorDark: "#000000",
+                colorLight: "#ffffff",
+                correctLevel: QRCode.CorrectLevel.H
+            });
+
+            // Show URL
+            const urlDisplay = document.createElement('div');
+            urlDisplay.className = 'url-display';
+            urlDisplay.textContent = url;
+            qrcodeDiv.appendChild(urlDisplay);
+
+            // Add download button
+            setTimeout(() => {
+                const canvas = qrcodeDiv.querySelector('canvas');
+                if (canvas) {
+                    const downloadBtn = document.createElement('button');
+                    downloadBtn.className = 'download-btn';
+                    downloadBtn.textContent = '⬇️ Download QR Code';
+                    downloadBtn.onclick = () => {
+                        const dataUrl = canvas.toDataURL('image/png');
+                        const link = document.createElement('a');
+                        link.download = 'whatsapp-sms-qr-code.png';
+                        link.href = dataUrl;
+                        link.click();
+                    };
+                    qrcodeDiv.appendChild(downloadBtn);
+                }
+            }, 100);
+        }
+    </script>
+</body>
+
+</html>
