@@ -92,30 +92,9 @@ function shareBrochure() {
 }
 
 
-// Open WhatsApp with message (and link if file share failed/not used)
-function openWhatsApp() {
-    const message = createMessage();
-    const phoneNumber = CONFIG.phoneNumber.replace(/[^\d+]/g, ''); // Clean phone number
-
-    // WhatsApp URL scheme
-    const whatsappURL = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${encodeURIComponent(message)}`;
-
-    // Try to open WhatsApp
-    try {
-        window.location.href = whatsappURL;
-        hasRedirected = true;
-
-        if (countdownInterval) {
-            clearInterval(countdownInterval);
-        }
-    } catch (error) {
-        console.log('WhatsApp redirect failed:', error);
-    }
-}
-
 // Open SMS
 function openSMS() {
-    const message = createMessage();
+    const message = CONFIG.message; // Just the message, no link
     const phoneNumber = CONFIG.phoneNumber.replace(/[^\d+]/g, '');
 
     let smsURL;
@@ -137,28 +116,6 @@ function openSMS() {
     } catch (error) {
         console.log('SMS redirect failed:', error);
     }
-}
-
-// Create message (adds link ONLY if we fall back to link sharing - logically handled by context)
-// Note: When sharing the file directly, we usually just want the text. 
-// But if we fallback to openWhatsApp(), we might want the link.
-// For simplicity, let's keep the link in the text for openWhatsApp, 
-// but the shareBrochure uses the file + text.
-function createMessage() {
-    let fullMessage = CONFIG.message;
-
-    // If we are NOT using the file share API (i.e. this is a fallback or link mode),
-    // we might want to append a link.
-    // However, since we are now using a local file, we can't really "link" to it easily 
-    // for external users unless it's hosted.
-    // Ideally, for the FALLBACK, we should probably warn the user or just send text.
-    // Let's perform a check: if pdfLink is a http URL, append it. If relative, don't.
-
-    if (CONFIG.pdfLink && CONFIG.pdfLink.startsWith('http')) {
-        fullMessage += `\n\n📄 ${CONFIG.pdfName}: ${CONFIG.pdfLink}`;
-    }
-
-    return fullMessage;
 }
 
 // Detect visibility change
