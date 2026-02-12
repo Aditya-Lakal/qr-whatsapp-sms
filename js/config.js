@@ -7,7 +7,7 @@ const CONFIG = {
     phoneNumber: '+918080637616',
 
     // Message that will be pre-filled in WhatsApp/SMS
-    message: 'Hi! this is Aditya , thanks for visiting our Atman booth at ai summit 2026',
+    message: 'Hi AI Enthusiast,Thanks for visiting *Atman Booth at India AI Impact Summit 2026*',
 
     // PDF link - LOCAL FILE (for Web Share API)
     // This must be relative to the index.html file
@@ -45,4 +45,5 @@ const CONFIG = {
 // 1. Upload PDF to your website's folder
 // 2. Use full URL: https://yourwebsite.com/folder/file.pdf
 //
+
 // ============================================
